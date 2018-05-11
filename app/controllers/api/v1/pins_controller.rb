@@ -11,7 +11,7 @@ email =  request.headers["HTTP_X_USER_EMAIL"] #asumiendo que sea un correo por a
 token =  request.headers['HTTP_X_API_TOKEN'] #asumiendo que sea un toquen por aparte
 user_email = User.find_by_email(email)
 user_token =  User.find_by(api_token: token)
-if (user_email.email && (user_token.api_token == user_email.api_token))
+if (user_email == user_token)  #esto en formato json se puede
   else
       render json:{ errors: [ { detail: "Access denied" } ] }, status: 401
     end
