@@ -7,14 +7,11 @@ class Api::V1::PinsController < ApplicationController
  
 def authenticate!
 # autenticación con curl -XGET -H "X-User-Email:diegofdog@gmail.com” -H "X-Api-Token: e77aca7aab4f325f064b8c7b288e7414" "http://localhost:3000/api/v1/pins"
-email =  request.headers["HTTP_X_USER_EMAIL"] 
-token =  request.headers['HTTP_X_API_TOKEN']
+email =  request.headers["HTTP_X_USER_EMAIL"] #asumiendo que sea un correo por aparte
+token =  request.headers['HTTP_X_API_TOKEN'] #asumiendo que sea un toquen por aparte
 user_email = User.find_by_email(email)
 user_token =  User.find_by(api_token: token)
-if (user_email.email && user_email.api_token == user_token.api_token)
-  render json: user_token.api_token
-  puts email
-  puts token
+if (user_email.email && (user_token.api_token == user_email.api_token))
   else
       render json:{ errors: [ { detail: "Access denied" } ] }, status: 401
     end
