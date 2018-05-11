@@ -11,8 +11,8 @@ email =  request.headers["HTTP_X_USER_EMAIL"]
 token =  request.headers['HTTP_X_API_TOKEN']
 user_email = User.find_by_email(email)
 user_token =  User.find_by(api_token: token)
-if (user_email && user_token)
-  render json: user_email
+if (user_email.email && user_email.api_token == user_token.api_token)
+  render json: user_token.api_token
   puts email
   puts token
   else
