@@ -1,5 +1,5 @@
 class Api::V1::PinsController < ApplicationController
-  before_action :authenticate!#, :only => [:index, :create]   # por recomendación del tutor, la autenticación se hace aquí directamente en el controlador de la API
+  before_action :authenticate!, :only => [:index, :create]   # por recomendación del tutor, la autenticación se hace aquí directamente en el controlador de la API
   #before_action :authenticate_user, :only => [:index, :create] # autenticación solo por usuario
   #before_action :authenticate_token, :only => [:index, :create] #autenticación solo por token
 # leer los headers del usuario y el token, buscar en la base de datos con ese usuario es decir con el obtenido en el request y comparar el token del usuario
