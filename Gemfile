@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'masonry-rails'
+gem 'tzinfo-data'
+gem 'httparty'
 
 
 group :development do
